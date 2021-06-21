@@ -27,6 +27,10 @@ const UserSchema = Schema ({
     estado: {
         type: Boolean,
         default: true
+    },
+    dietByWeek: {
+        type: Schema.Types.ObjectId,
+        ref: 'DietByWeek'
     }
 });
 
