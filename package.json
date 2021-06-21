@@ -4,12 +4,11 @@
   "description": "App que muestra la dieta que un usuario registrado ha seguido cada semana durante x meses y los kilos que ha perdido.",
   "main": "index.js",
   "scripts": {
-    "start":"node app.js"
+    "start": "node app.js"
   },
   "author": "Pablo Barba",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-validator": "^6.12.0",
