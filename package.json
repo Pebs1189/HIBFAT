@@ -1,0 +1,11 @@
+{
+  "name": "hibfat",
+  "version": "1.0.0",
+  "description": "App que muestra la dieta que un usuario registrado ha seguido cada semana durante x meses y los kilos que ha perdido.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pablo Barba",
+  "license": "ISC"
+}
