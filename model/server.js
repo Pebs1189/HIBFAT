@@ -8,9 +8,9 @@ class Server {
         this.port = process.env.PORT;
 
         this.paths = {
-            dietByDay: 'user/dietByDay',
-            dietByWeek: 'user/dietByWeek',
-            users: 'users'
+            dietByDay: '/user/dietByDay',
+            dietByWeek: '/user/dietByWeek',
+            users: '/users'
         };
     
         //connect BDs

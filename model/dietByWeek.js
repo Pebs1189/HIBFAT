@@ -5,7 +5,8 @@ const {Schema, model} = require('mongoose');
 const DietByWeekSchema = Schema ({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: [true, 'El usuario es obligatorio']
     },
     descripcion: {
         type: String
