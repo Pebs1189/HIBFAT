@@ -4,7 +4,8 @@
   "description": "App que muestra la dieta que un usuario registrado ha seguido cada semana durante x meses y los kilos que ha perdido.",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "jest"
   },
   "author": "Pablo Barba",
   "license": "ISC",
@@ -16,6 +17,8 @@
     "mongoose": "^5.12.14"
   },
   "devDependencies": {
+    "axios": "^0.21.1",
+    "jest": "^27.0.6",
     "nodemon": "^2.0.7"
   }
 }

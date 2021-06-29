@@ -17,7 +17,7 @@ router.get('/:id', [
     validarCampos
 ], getUserByID);
 
-//post user
+//post user: create a new user
 router.post('/', [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('correo', 'El correo no es válido').isEmail(),
@@ -25,5 +25,7 @@ router.post('/', [
     check('password', 'El password debe tener más de 5 letras').isLength({min:6}), 
     validarCampos
 ], addUser);
+
+//put user: update user data (the user logged must be the same user that we want to update data)
 
 module.exports = router;
