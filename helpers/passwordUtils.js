@@ -7,7 +7,7 @@ const encryptPassword = (password) => {
 }
 
 const isValidPassword = (password, hash) => {
-    const res = bcryptjs.compareSync(password, hash)
+    const res = bcryptjs.compareSync(password, hash);
 
     return res;
 }
