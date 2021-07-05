@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 
-require('../controller/passport')(passport);
+require('../config/passport')(passport);
 
 const {dbConnection} = require('../database/bda_config');
 
