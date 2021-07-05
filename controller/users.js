@@ -1,12 +1,12 @@
 //imports
 const {response} = require('express');
-const bcryptjs = require('bcryptjs');
 
 const User = require('../model/user');
+const { encryptPassword } = require('../helpers/passwordUtils');
 
 //GET users paginado (5 max)
 const getUsers = async (req, res = response) => {
-    const {limit=5, desde=0} = req.query;
+    const {limit=10, desde=0} = req.query;
     const query = {estado:true};
    
     //paginación de resultados, se usa Promise.all para mejorar el rendimiento
@@ -52,8 +52,7 @@ const addUser = async (req, res = response) => {
     const user = new User({nombre, correo, password, rol});
     
     //encript password
-    const salt = bcryptjs.genSaltSync();
-    user.password = bcryptjs.hashSync(password, salt);
+    user.password = encryptPassword(password);
 
     try {
         //save user in mongoDB

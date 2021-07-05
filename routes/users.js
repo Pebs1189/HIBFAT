@@ -1,8 +1,10 @@
 //imports
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { getUsers, addUser, getUserByID } = require('../controller/users');
+const passport = require('passport');
+
 const validarCampos = require('../middleware/validar-campos');
+const { getUsers, addUser, getUserByID } = require('../controller/users');
 const { existeEmail } = require('../helpers/db-validator');
 
 //init router
@@ -17,8 +19,8 @@ router.get('/:id', [
     validarCampos
 ], getUserByID);
 
-//post user: create a new user
-router.post('/', [
+//post register: create a new user
+router.post('/register', [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('correo', 'El correo no es válido').isEmail(),
     check('correo').custom( existeEmail ),
@@ -26,6 +28,13 @@ router.post('/', [
     validarCampos
 ], addUser);
 
+//post login: validate sesion init of user
+router.post('/login', 
+    passport.authenticate('local', {failureRedirect:'/', successRedirect:'/users'})
+);
+
 //put user: update user data (the user logged must be the same user that we want to update data)
+
+//delete user: delete registered user and his diet associated (put his state as false)
 
 module.exports = router;
