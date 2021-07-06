@@ -2,11 +2,13 @@ const { response } = require("express");
 
 
 const addDietByDay = (req, resp = response)=> {
-    const body = req.body;
+    if (req.isAuthenticated()){
+        const body = req.body;
 
-    console.log(req)
-
-    return resp.json(body);
+        return resp.json(body);
+    } else {
+        return resp.json({msg:'No está atutenticado'});
+    }
 }
 
 module.exports = {

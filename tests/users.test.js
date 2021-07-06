@@ -41,7 +41,7 @@ describe('Testing inside users.test.js', ()=> {
         await getUserById(url, id)
             .then(value => expect(value).toBe('Must be a incorrect user id'))
             .catch(err => {
-                const msgErr = err.response.data.errors[0].msg; 
+                const msgErr = err.response.data.errors[0].msg;
                 expect(msg).toBe(msgErr);
             }
         );

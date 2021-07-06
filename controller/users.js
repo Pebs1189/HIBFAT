@@ -68,9 +68,15 @@ const addUser = async (req, res = response) => {
     }
 }
 
+const logoutUser = (req, resp = response) => {
+    req.logout();
+    resp.json({msg:'Sesión finalizada'});
+}
+
 //exports
 module.exports = {
     getUsers,
     addUser,
-    getUserByID
+    getUserByID,
+    logoutUser
 }
