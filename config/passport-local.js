@@ -9,7 +9,7 @@ const customFields = {
     passwordField: 'password'
 }
 
-//Using user moder we verify if the user was trying to login is registered
+//Using user model we verify if the user was trying to login is registered
 const verifyCallBack = (correo, password, done) => {
     User.findOne({correo})
         .then( user => {                     

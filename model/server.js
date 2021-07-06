@@ -3,8 +3,13 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 
+//configs
+require('dotenv').config({path:'./.env'});
+
 //import and use the local strategy selected to Passport
 require('../config/passport-local')(passport);
+//import and use google strategy selected to Passport
+require('../config/passport-google')(passport);
 
 const {dbConnection} = require('../database/bda_config');
 

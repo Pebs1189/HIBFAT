@@ -33,6 +33,21 @@ router.post('/login',
     passport.authenticate('local', {failureRedirect:'/failure', successRedirect:'/success'})
 );
 
+//post login with google: validate sesion init of user
+router.get('/login-google', 
+    passport.authenticate('google', { scope: ['profile'] })
+);
+
+
+router.get('/login-google/callback', 
+    passport.authenticate('google', { failureRedirect: '/login-google' }),
+    (req, res) => {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+    }
+);
+
+//user logout
 router.get('/logout', logoutUser);
 
 //put user: update user data (the user logged must be the same user that we want to update data)
