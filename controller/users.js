@@ -46,12 +46,12 @@ const getUserByID = async (req, res = response) => {
     }
 }
 
-//POST user
+//POST user (User Register)
 const addUser = async (req, res = response) => {
     const {nombre, correo, password, rol} = req.body;
     const user = new User({nombre, correo, password, rol});
     
-    //encript password
+    //encrypt password
     user.password = encryptPassword(password);
 
     try {

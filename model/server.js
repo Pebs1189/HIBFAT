@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 
+//import and use the local strategy selected to Passport
 require('../config/passport-local')(passport);
 
 const {dbConnection} = require('../database/bda_config');
@@ -12,6 +13,9 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
         this.secret = process.env.SECRET_KEY;
+
+        //testing an react APP
+        this.app.use(express.static('public'));
 
         this.paths = {
             dietByDay: '/user/dietByDay',
@@ -30,10 +34,12 @@ class Server {
     }
 
     async connectDBs() {
+        //realize db connection
         await dbConnection();
     }
 
     routes() {
+        //config endpoints
         this.app.use(this.paths.users, require('../routes/users'));
         this.app.use(this.paths.dietByDay, require('../routes/dietByDay'));
     }
@@ -47,12 +53,14 @@ class Server {
         //Read and Parse to body with JSON
         this.app.use(express.json());
 
+        //configure session 
         this.app.use(session({
             secret: `${this.secret}`,
             resave: true,
             saveUninitialized: true
         }));
         
+        //init passport and session
         this.app.use(passport.initialize());
         this.app.use(passport.session());
     }
