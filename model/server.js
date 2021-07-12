@@ -8,6 +8,7 @@ require('dotenv').config({path:'./.env'});
 
 //import and use the local strategy selected to Passport
 require('../config/passport-local')(passport);
+
 //import and use google strategy selected to Passport
 require('../config/passport-google')(passport);
 

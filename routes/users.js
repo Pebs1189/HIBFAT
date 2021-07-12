@@ -28,22 +28,25 @@ router.post('/register', [
     validarCampos
 ], addUser);
 
-//post login: validate sesion init of user
+//helpers
+router.get('/failed-login', (req, res) => res.send('You Failed to log in!'));
+router.get('/success-login', (req, res) => res.send(`Welcome ${req.user.correo} and thanks to log in!`));
+
+//post login with local: validate sesion init of user
 router.post('/login', 
-    passport.authenticate('local', {failureRedirect:'/failure', successRedirect:'/success'})
+    passport.authenticate('local', {failureRedirect:'/failed-login', successRedirect:'/success-login'})
 );
 
 //post login with google: validate sesion init of user
-router.get('/login-google', 
-    passport.authenticate('google', { scope: ['profile'] })
+router.get('/google', 
+    passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-
-router.get('/login-google/callback', 
-    passport.authenticate('google', { failureRedirect: '/login-google' }),
+router.get('/login-google', 
+    passport.authenticate('google', { failureRedirect: '/failed-login' }),
     (req, res) => {
         // Successful authentication, redirect home.
-        res.redirect('/');
+        res.redirect('/user/success-login');
     }
 );
 
