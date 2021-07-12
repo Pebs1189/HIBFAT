@@ -10,7 +10,7 @@ describe('Testing inside users.test.js', ()=> {
 
         await getUsers(url)
             .then(data => {
-                expect(data.total).toBe(7);
+                expect(data.total).toBe(8);
             }
         );
     });
