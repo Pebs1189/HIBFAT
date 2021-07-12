@@ -33,9 +33,26 @@ const decryptPlainTextEncrypted = (textEncrypted) => {
     return textOriginal;
 }
 
+//Using crypto-js to encrypt objects
+const objectEncryption = ( obj ) => {
+    const objectEncrypted = CryptoJS.AES.encrypt(JSON.stringify(obj), secret_key).toString();
+
+    return objectEncrypted;
+}
+
+//Using crypto-js to decrypt objects
+const objectDecryption = (encryptedObj) => {
+    const bytes = CryptoJS.AES.decrypt(encryptedObj, secret_key);
+    const decryptedObj = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+    return decryptedObj;
+}
+
 module.exports = {
     encryptPassword,
     isValidPassword,
     encryptPlainText,
-    decryptPlainTextEncrypted
+    decryptPlainTextEncrypted,
+    objectDecryption,
+    objectEncryption
 }
