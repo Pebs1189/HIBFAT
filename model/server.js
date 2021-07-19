@@ -12,6 +12,9 @@ require('../config/passport-local')(passport);
 //import and use google strategy selected to Passport
 require('../config/passport-google')(passport);
 
+//import and use facebook strategy selected to Passport
+require('../config/passport-facebook')(passport);
+
 const {dbConnection} = require('../database/bda_config');
 
 class Server {

@@ -31,10 +31,12 @@ router.post('/register', [
 //helpers
 router.get('/failed-login', (req, res) => res.send('You Failed to log in!'));
 router.get('/success-login', (req, res) => res.send(`Welcome ${req.user.correo} and thanks to log in!`));
+router.get('/privacity', (req, res) => res.send(`Welcome to privacity!`));
+router.get('/fb_data_del', (req, res) => res.send(`Welcome to delete your facebook data in our databases!`));
 
 //post login with local: validate sesion init of user
 router.post('/login', 
-    passport.authenticate('local', {failureRedirect:'/failed-login', successRedirect:'/success-login'})
+    passport.authenticate('local', {failureRedirect:'/user/failed-login', successRedirect:'/user/success-login'})
 );
 
 //post login with google: validate sesion init of user
@@ -43,13 +45,25 @@ router.get('/google',
 );
 
 router.get('/login-google', 
-    passport.authenticate('google', { failureRedirect: '/failed-login' }),
+    passport.authenticate('google', { failureRedirect: '/user/failed-login' }),
     (req, res) => {
         // Successful authentication, redirect home.
         res.redirect('/user/success-login');
     }
 );
 
+//post login with facebook: validate sesion init of user
+router.get('/facebook', 
+    passport.authenticate('facebook')
+);
+
+router.get('/login-facebook', 
+    passport.authenticate('facebook', { failureRedirect: '/user/failed-login' }),
+    (req, res) => {
+        // Successful authentication, redirect home.
+        res.redirect('/user/success-login');
+    }
+);
 //user logout
 router.get('/logout', logoutUser);
 
