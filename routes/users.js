@@ -53,17 +53,18 @@ router.get('/login-google',
 );
 
 //post login with facebook: validate sesion init of user
-router.get('/facebook', 
-    passport.authenticate('facebook')
-);
+// router.get('/facebook', 
+//     passport.authenticate('facebook')
+// );
 
-router.get('/login-facebook', 
-    passport.authenticate('facebook', { failureRedirect: '/user/failed-login' }),
-    (req, res) => {
-        // Successful authentication, redirect home.
-        res.redirect('/user/success-login');
-    }
-);
+// router.get('/login-facebook', 
+//     passport.authenticate('facebook', { failureRedirect: '/user/failed-login' }),
+//     (req, res) => {
+//         // Successful authentication, redirect home.
+//         res.redirect('/user/success-login');
+//     }
+// );
+
 //user logout
 router.get('/logout', logoutUser);
 
